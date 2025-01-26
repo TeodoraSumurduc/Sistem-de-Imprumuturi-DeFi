@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "dev": "lite-server",
+    "dev": "lite-server --port 3006",
     "test": "echo \"Error: no test specified\" && sexit 1"
   },
   "author": "teodorasumurduc@gmail.com",
@@ -20,6 +20,9 @@
     "lite-server": "^2.3.0",
     "nodemon": "^1.17.3",
     "truffle": "5.0.2",
-    "truffle-contract": "3.0.6"
+    "truffle-contract": "^4.0.31"
+  },
+  "dependencies": {
+    "web3": "^4.16.0"
   }
 }
