@@ -50,38 +50,34 @@ App = {
     },
   
     render: async () => {
-      // Prevent double render
       if (App.loading) {
         return
       }
   
-      // Update app loading state
       App.setLoading(true)
-  
-      // Render Account
+
       $('#account').html(App.account)
   
-      // Render Tasks
       await App.renderLoans()
-  
-      // Update loading state
+
       App.setLoading(false)
     },
   
     renderLoans: async () => {
-        const owner = await App.defiLoan.owner()
-        const numberLoans = await App.defiLoan.loans(owner,0);
-        console.log(numberLoans)
-        const $taskTemplate = $('.taskTemplate')
-    
-        // for(var i = 1; i <= numberLoans; i++){
-        //   const loan = await App.defiLoan.loan[i];
-        //   const amount = loan[0].toNumber()
-        //   const interest = loan[1].toNumber()
-        //   const dueDate = loan[2].toNumber()
-        //   const borrower = loan[3]
-        //   const isRepaid = loan[4]
-        // }
+        try {
+            const owner = await App.defiLoan.owner();
+            let i = 0;
+            while (true) {
+              const loan = await App.defiLoan.loans(owner, i);
+              if (!loan) {
+                break; // Dacă nu mai există împrumuturi, ieși din buclă
+              }
+              console.log('Imprumut ${i + 1}:', loan);
+              i++;
+            }
+        } catch (error) {
+            console.error('Eroare:', error);
+        }
     
       },
   
