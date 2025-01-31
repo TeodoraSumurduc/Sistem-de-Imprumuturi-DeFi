@@ -1,4 +1,5 @@
 pragma solidity ^0.5.0;
+pragma experimental ABIEncoderV2;
 
 contract DeFiLoan {
 
@@ -18,7 +19,7 @@ contract DeFiLoan {
     event OwnerAddress(address owner);
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Not the owner");
+        ///require(msg.sender == owner, "Not the owner");
         _;
     }
 
@@ -30,8 +31,8 @@ contract DeFiLoan {
 
     //adauga un nou imprumut in lista unui utilizator
     function createLoan(uint _amount, uint _interest, uint _dueDate) public {
-        require(_amount > 0, "Amount must be greater than 0");
-        require(_dueDate > block.timestamp, "Due date must be in the future");
+        ///require(_amount > 0, "Amount must be greater than 0");
+        ///require(_dueDate > block.timestamp, "Due date must be in the future");
 
         loans[owner].push(Loan({
             amount: _amount,
@@ -44,12 +45,12 @@ contract DeFiLoan {
         emit LoanCreated(msg.sender, _amount, _interest, _dueDate);
     }
 
-    /*
     //afiseaza toate imprumuturile unui utilizator
     function getLoans(address _borrower) external view returns (Loan[] memory) {
         return loans[_borrower];
     }
-    
+
+    /*
     //permite rambursarea unui anumit imprumut
     function repayLoan(uint _loanIndex) external payable {
         // Logica de rambursare

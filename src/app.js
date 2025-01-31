@@ -66,15 +66,28 @@ App = {
     renderLoans: async () => {
         try {
             const owner = await App.defiLoan.owner();
-            let i = 0;
-            while (true) {
-              const loan = await App.defiLoan.loans(owner, i);
-              if (!loan) {
-                break; // Dacă nu mai există împrumuturi, ieși din buclă
-              }
-              console.log('Imprumut ${i + 1}:', loan);
-              i++;
+            console.log(owner);
+            const loansOwner = await App.defiLoan.getLoans(owner);
+            console.log(loansOwner);
+
+            const $loanTemplate  = $('.loanTemplate')
+
+            for(var i = 0; i < loansOwner.length; i++) {
+              const loan = loansOwner[i];
+              const amount = loan[0];
+              const interest = loan[1];
+              const dueDate = loan[2];
+              console.log(amount + " " + interest + " " + dueDate);
+
+              //html
+              const $newLoanTemplate = $loanTemplate.clone()
+              $newLoanTemplate.find('.content').html("Subiect")
+              $newLoanTemplate.find('input')
+                              .prop('amount', amount)
+                              .prop('interest', interest)
+                              .on('click', App.toggleCompleted)
             }
+            
         } catch (error) {
             console.error('Eroare:', error);
         }
