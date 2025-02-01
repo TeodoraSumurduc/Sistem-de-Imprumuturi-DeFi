@@ -34,8 +34,8 @@ App = {
     },
   
     loadAccount: async () => {
-        // Set the current blockchain account
-        App.account = web3.eth.accounts[0]
+      const accounts = await web3.eth.getAccounts();
+      App.account = accounts[0];
     },
     
     loadContract: async () => {
@@ -72,22 +72,37 @@ App = {
 
             const $loanTemplate  = $('.loanTemplate')
 
+            //active loans
             for(var i = 0; i < loansOwner.length; i++) {
               const loan = loansOwner[i];
               const amount = loan[0];
               const interest = loan[1];
               const dueDate = loan[2];
+              const isRepaid = loan[4];
+              console.log(isRepaid);
+
               console.log(amount + " " + interest + " " + dueDate);
 
               //html
               const $newLoanTemplate = $loanTemplate.clone()
-              $newLoanTemplate.find('.content').html("Subiect")
+              $newLoanTemplate.find('.content').html(`Sumă: ${amount}, Dobândă: ${interest}, Scadență: ${new Date(dueDate * 1000).toLocaleString()}`);
               $newLoanTemplate.find('input')
                               .prop('amount', amount)
                               .prop('interest', interest)
-                              .on('click', App.toggleCompleted)
+                              //.on('click', App.toggleCompleted)
+
+              if (isRepaid) {
+                $('#repaidLoanList').append($newLoanTemplate)
+              } else {
+                $('#loanList').append($newLoanTemplate)
+              }
+                  
+              $newLoanTemplate.show();
+              
             }
             
+            
+
         } catch (error) {
             console.error('Eroare:', error);
         }
