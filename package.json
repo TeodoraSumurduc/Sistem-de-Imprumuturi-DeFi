@@ -23,6 +23,7 @@
     "truffle-contract": "^4.0.31"
   },
   "dependencies": {
+    "@metamask/sdk": "^0.32.0",
     "web3": "^4.16.0"
   }
 }
