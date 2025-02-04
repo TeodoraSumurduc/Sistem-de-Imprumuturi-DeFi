@@ -15,7 +15,7 @@ contract DeFiLoan {
     mapping(address => Loan[]) public activeLoans;
     mapping(address => Loan[]) public paidLoans;
 
-    event LoanCreated(address indexed borrower, uint amount, uint interest, uint dueDate);
+    event LoanCreated(address indexed borrower, uint amount, uint interest, uint dueDate, bool isRepaid);
     event LoanRepaid(address indexed borrower, uint loanIndex);
     event OwnerAddress(address owner);
 
@@ -46,7 +46,7 @@ contract DeFiLoan {
             isRepaid: false
         }));
 
-        emit LoanCreated(msg.sender, _amount, 10, _dueDate);
+        emit LoanCreated(msg.sender, _amount, 10, _dueDate, false);
     }
 
     //afiseaza toate imprumuturile unui utilizator

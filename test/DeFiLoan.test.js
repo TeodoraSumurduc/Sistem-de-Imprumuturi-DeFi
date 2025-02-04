@@ -15,6 +15,22 @@ contract('DeFiLoan', (accounts) => {
         assert.notEqual(address, undefined)
     })
 
+    it('create loans', async () => {
+        const dueDate = Math.floor(Date.now() / 1000) + 3600; 
+        var nrContracts = await this.defiLoan.getActiveLoans(accounts[0])
+        nrContracts = nrContracts.length
+        const result = await this.defiLoan.createLoan(5, dueDate);
+        const loans = await this.defiLoan.getActiveLoans(accounts[0]);
+        assert.equal(loans.length, nrContracts + 1, 'Loan was not added correctly')
+
+        const event = result.logs[0].args
+        assert.equal(Number(event.amount), 5, 'Amount is not 5');
+        assert.equal(Number(event.interest), 10, 'Interest rate is incorrect');
+        assert.equal(event.dueDate, dueDate, 'Due date must be in the future');
+        assert.equal(event.borrower, accounts[0], 'Borrower address is incorrect');
+        assert.equal(event.isRepaid, false, 'Loan should not be repaid initially');
+    })
+
     it('list loans', async () => {
         const dueDate = Math.floor(Date.now() / 1000) + 3600; // 1 oră de la momentul actual
         
