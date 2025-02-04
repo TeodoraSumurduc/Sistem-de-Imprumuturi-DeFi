@@ -27,7 +27,7 @@ contract DeFiLoan {
     constructor() public {
         owner = msg.sender; //adresa celui care a creat contractul
         emit OwnerAddress(owner);
-        createLoan(5, 3, 27);
+        createLoan(5, 9, 27);
     }
 
     //adauga un nou imprumut in lista unui utilizator
@@ -56,7 +56,7 @@ contract DeFiLoan {
         //require(index < activeLoans[borrower].length, "Loan does not exist");
     
         Loan storage loan = activeLoans[borrower][index];
-        uint256 totalAmount = loan.amount + loan.interest;
+        //uint256 totalAmount = loan.amount + loan.interest;
     
         //require(msg.value >= totalAmount, "Not enough funds to repay loan");
     
