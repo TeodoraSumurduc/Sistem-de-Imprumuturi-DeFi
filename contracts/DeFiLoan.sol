@@ -28,6 +28,7 @@ contract DeFiLoan {
         owner = msg.sender; //adresa celui care a creat contractul
         emit OwnerAddress(owner);
         createLoan(5, 9, 27);
+        createLoan(5, 3, 27);
     }
 
     //adauga un nou imprumut in lista unui utilizator
@@ -47,8 +48,12 @@ contract DeFiLoan {
     }
 
     //afiseaza toate imprumuturile unui utilizator
-    function getLoans(address _borrower) external view returns (Loan[] memory) {
+    function getActiveLoans(address _borrower) external view returns (Loan[] memory) {
         return activeLoans[_borrower];
+    }
+
+    function getPaidLoans(address _borrower) external view returns (Loan[] memory) {
+        return paidLoans[_borrower];
     }
 
     //permite rambursarea unui anumit imprumut

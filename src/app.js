@@ -67,7 +67,7 @@ App = {
         try {
             const owner = await App.defiLoan.owner();
             console.log(owner);
-            const loansOwner = await App.defiLoan.getLoans(owner);
+            const loansOwner = await App.defiLoan.getActiveLoans(owner);
             console.log(loansOwner);
 
             const $loanTemplate  = $('.loanTemplate')
