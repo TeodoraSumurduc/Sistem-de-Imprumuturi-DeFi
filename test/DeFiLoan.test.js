@@ -50,4 +50,25 @@ contract('DeFiLoan', (accounts) => {
         }
         
     })
+
+    it('toggles loan completion', async () => {
+        const loansA = await this.defiLoan.getActiveLoans(accounts[0]);
+        const loanA = loansA[0];
+
+        // Transformă suma în wei pentru a evita zecimale
+        const amountInWei = web3.utils.toBN(loanA.amount);
+        const interestInWei = amountInWei.mul(web3.utils.toBN(loanA.interest)).div(web3.utils.toBN(100));
+        const totalPayment = amountInWei.add(interestInWei);
+        const result = await this.defiLoan.repayLoan(accounts[0], 0, { from: accounts[0], value: totalPayment });
+
+        const loans = await this.defiLoan.getPaidLoans(accounts[0]);
+        const loan = loans[0];
+
+        assert.equal(loan.isRepaid, true, 'Loan should be marked as repaid');
+
+        const event = result.logs[0].args;
+        //console.log(event);
+        assert.equal(event.borrower, accounts[0], 'Borrower address is incorrect');
+        assert.isAbove(Number(event.loanIndex), -1, 'Loan should be repaid');
+    })
 })

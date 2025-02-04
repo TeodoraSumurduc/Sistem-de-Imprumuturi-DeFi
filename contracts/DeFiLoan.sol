@@ -28,9 +28,9 @@ contract DeFiLoan {
         owner = msg.sender; //adresa celui care a creat contractul
         emit OwnerAddress(owner);
        // Creează un împrumut cu data de scadență în viitor (30 de zile de la timestamp-ul curent)
-        uint dueDate = block.timestamp + (30 * 1 days); // 30 zile
-        createLoan(5, dueDate);
-        createLoan(5, dueDate);
+        //uint dueDate = block.timestamp + (30 * 1 days); // 30 zile
+        //createLoan(5, dueDate);
+        //createLoan(5, dueDate);
     }
 
     //adauga un nou imprumut in lista unui utilizator
@@ -59,22 +59,20 @@ contract DeFiLoan {
     }
 
     //permite rambursarea unui anumit imprumut
-    function repayLoan(address borrower, uint256 index) public payable {
-        //require(index < activeLoans[borrower].length, "Loan does not exist");
+    function repayLoan(address _borrower, uint256 _index) public payable {
+        require(_index < activeLoans[_borrower].length, "Loan does not exist");
     
-        Loan storage loan = activeLoans[borrower][index];
-        //uint256 totalAmount = loan.amount + loan.interest;
+        Loan storage loan = activeLoans[_borrower][_index];
+        uint256 totalAmount = loan.amount + (loan.amount * loan.interest / 100);
     
-        //require(msg.value >= totalAmount, "Not enough funds to repay loan");
+        require(msg.value >= totalAmount, "Not enough funds to repay loan");
     
         // Marcare ca rambursat
         loan.isRepaid = true;
     
-        // Mută împrumutul în lista de împrumuturi plătite
-        paidLoans[borrower].push(loan);
+        payable(owner).transfer(totalPayment);
 
-        // Șterge împrumutul din activeLoans
-        delete activeLoans[borrower][index];
+        emit LoanRepaid(_borrower, _index);
     }
 
     /*

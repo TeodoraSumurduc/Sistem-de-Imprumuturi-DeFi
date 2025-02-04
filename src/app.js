@@ -79,7 +79,7 @@ App = {
 
           $('#loanList').empty();
           $('#repaidLoanList').empty();
-
+          var index = 0;
           loansOwner.forEach((loan) => {
               const amount = loan[0];
               const interest = loan[1];
@@ -87,20 +87,23 @@ App = {
               const isRepaid = loan[4];
 
               console.log(`Împrumut: ${amount} ETH, Dobândă: ${interest}, Scadență: ${new Date(dueDate * 1000).toLocaleString()}, Rambursat: ${isRepaid}`);
-
-              const $newLoanTemplate = $loanTemplate.clone();
-              $newLoanTemplate.find('.content').html(`Sumă: ${amount}, Dobândă: ${interest}, Scadență: ${new Date(dueDate * 1000).toLocaleString()}`);
-              $newLoanTemplate.find('input')
-                  .prop('amount', amount)
-                  .prop('interest', interest);
-
-              if (isRepaid) {
-                  $('#repaidLoanList').append($newLoanTemplate);
-              } else {
-                  $('#loanList').append($newLoanTemplate);
+              if(amount != 0 && interest != 0){
+                const $newLoanTemplate = $loanTemplate.clone();
+                $newLoanTemplate.find('.content').html(`Index: ${index}, Sumă: ${amount}, Dobândă: ${interest}, Scadență: ${new Date(dueDate * 1000).toLocaleString()}`);
+                $newLoanTemplate.find('input')
+                    .prop('amount', amount)
+                    .prop('interest', interest)
+                    .on('click', App.toggleRepaid)
+  
+                if (isRepaid) {
+                    $('#repaidLoanList').append($newLoanTemplate);
+                } else {
+                    $('#loanList').append($newLoanTemplate);
+                }
+  
+                $newLoanTemplate.show();
               }
-
-              $newLoanTemplate.show();
+              index++;
           });
 
       } catch (error) {
@@ -109,30 +112,54 @@ App = {
   },
 
   createLoans: async () => {
-      //try {
-        App.setLoading(true);
+      try {
+        App.setLoading(true)
 
-        const content = $('#newLoan').val();
+        const content = $('#newLoan').val()
         if (!content || isNaN(content)) {
-            alert("Introdu o sumă validă pentru împrumut.");
-            App.setLoading(false);
+            alert("Introdu o sumă validă pentru împrumut.")
+            App.setLoading(false)
             return;
         }
 
-        //const amount = web3.utils.toWei(content, 'ether'); // Convertim în Wei
-        const dueDate = Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60; // Scadență peste 30 zile
+        const dueDate = Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60 // Scadență peste 30 zile
         
-        console.log("Creating loan:", content, dueDate);
-
-        const accounts = await web3.eth.getAccounts();
-        await App.defiLoan.createLoan(content, dueDate, { from: accounts[0] });
-
-        alert("Împrumut creat cu succes!");
-        window.location.reload();
-      //} catch (error) {
-      //    console.error("Eroare la crearea împrumutului:", error);
-      //}
+        console.log("Creating loan:", content, dueDate)
+        const accounts = await web3.eth.getAccounts()
+        await App.defiLoan.createLoan(content, dueDate, { from: accounts[0] })
+        //alert("Împrumut creat cu succes!")
+        window.location.reload()
+      } catch (error) {
+          console.error("Eroare la crearea împrumutului:", error);
+      }
   },
+
+  handleRepayment: async (event) => {
+    event.preventDefault(); // Previne refresh-ul paginii
+    App.setLoading(true);
+  
+    const loanId = document.getElementById('loanId').value;
+    const paymentValue = document.getElementById('paymentValue').value;
+
+    console.log(loanId + " " + paymentValue)
+  
+    try {
+      const accounts = await web3.eth.getAccounts();
+  
+      // Asigurare că valoarea introdusă e corectă (integer)
+      const valueInWei = web3.utils.toWei(paymentValue, 'ether');
+  
+      await App.defiLoan.repayLoan(accounts[0], loanId, { from: accounts[0], value: valueInWei });
+      alert('Loan repaid successfully!');
+      window.location.reload();
+    } catch (error) {
+      console.error('Repayment failed:', error);
+      alert('There was an error processing your repayment.');
+    }
+  
+    App.setLoading(false);
+  },
+  
 
   setLoading: (boolean) => {
       App.loading = boolean;

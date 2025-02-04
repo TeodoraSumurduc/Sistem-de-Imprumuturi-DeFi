@@ -39,6 +39,19 @@
         color: grey;
         text-decoration: line-through;
       }
+
+      .loanItem {
+        display: flex;
+        align-items: center;
+      }
+
+      .bullet {
+        width: 12px;
+        height: 12px;
+        background-color: grey;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
     </style>
   </head>
   <body>
@@ -58,17 +71,28 @@
           </div>
           <div id="content">
             <form onSubmit="App.createLoans(); return false;">
+              <label for="newLoan">New Loan:</label>
               <input id="newLoan" type="text" class="form-control" placeholder="Add Loan..." required>
               <input type="submit" hidden="">
             </form>
+            <br>
+            <form onsubmit="App.handleRepayment(event)">
+              <label for="loanId">Loan Index:</label>
+              <input type="number" id="loanId" name="loanId" required placeholder="Index of the loan" min="0">
+          
+              <label for="paymentValue">Payment Amount (in Wei):</label>
+              <input type="text" id="paymentValue" name="paymentValue" required placeholder="Amount in wei">
+              <button type="submit">Repay Loan</button>
+            </form>
+            <br>
             <ul id="loanList" class="list-unstyled">
-              <div class="loanTemplate" class="checkbox" style="display: none">
-                <label>
-                  <input type="checkbox" />
-                  <span class="content">Task content goes here...</span>
+              <div class="loanTemplate" style="display: none">
+                <label class="loanItem">
+                  <span class="bullet"></span>
+                  <span class="content">Loan goes here...</span>
                 </label>
               </div>
-            </ul>
+            </ul>            
             <ul id="repaidLoanList" class="list-unstyled">
             </ul>
           </div>
