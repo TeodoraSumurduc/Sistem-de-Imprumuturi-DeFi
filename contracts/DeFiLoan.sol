@@ -27,24 +27,26 @@ contract DeFiLoan {
     constructor() public {
         owner = msg.sender; //adresa celui care a creat contractul
         emit OwnerAddress(owner);
-        createLoan(5, 9, 27);
-        createLoan(5, 3, 27);
+       // Creează un împrumut cu data de scadență în viitor (30 de zile de la timestamp-ul curent)
+        uint dueDate = block.timestamp + (30 * 1 days); // 30 zile
+        createLoan(5, dueDate);
+        createLoan(5, dueDate);
     }
 
     //adauga un nou imprumut in lista unui utilizator
-    function createLoan(uint _amount, uint _interest, uint _dueDate) public {
-        ///require(_amount > 0, "Amount must be greater than 0");
-        ///require(_dueDate > block.timestamp, "Due date must be in the future");
+    function createLoan(uint _amount, uint _dueDate) public {
+        require(_amount > 0, "Amount must be greater than 0");
+        require(_dueDate > block.timestamp, "Due date must be in the future");
 
         activeLoans[owner].push(Loan({
             amount: _amount,
-            interest: _interest,
+            interest: 10,
             dueDate: _dueDate,
             borrower: owner,
             isRepaid: false
         }));
 
-        emit LoanCreated(msg.sender, _amount, _interest, _dueDate);
+        emit LoanCreated(msg.sender, _amount, 10, _dueDate);
     }
 
     //afiseaza toate imprumuturile unui utilizator
