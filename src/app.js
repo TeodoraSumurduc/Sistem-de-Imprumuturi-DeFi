@@ -1,199 +1,212 @@
 App = {
-  loading: false,
-  contracts: {},
-
-  load: async () => {
+    loading: false,
+    contracts: {},
+  
+    load: async () => {
       await App.loadWeb3();
       await App.loadAccount();
       await App.loadContract();
       await App.render();
-  },
-
-  loadWeb3: async () => {
+    },
+  
+    loadWeb3: async () => {
       if (window.ethereum) {
-          App.web3Provider = window.ethereum;
-          window.web3 = new Web3(window.ethereum);
-          try {
-              await window.ethereum.request({ method: 'eth_requestAccounts' });
-              console.log("Ethereum wallet connected!");
-          } catch (error) {
-              console.error("User denied account access:", error);
-              alert("Trebuie să permiți accesul la MetaMask pentru a folosi această aplicație.");
-          }
+        App.web3Provider = window.ethereum;
+        window.web3 = new Web3(window.ethereum);
+        try {
+          await window.ethereum.request({ method: 'eth_requestAccounts' });
+          console.log("Ethereum wallet connected!");
+        } catch (error) {
+          console.error("User denied account access:", error);
+          alert("Trebuie să permiți accesul la MetaMask pentru a folosi această aplicație.");
+        }
       } else if (window.web3) {
-          App.web3Provider = window.web3.currentProvider;
-          window.web3 = new Web3(window.web3.currentProvider);
-          console.log("Using legacy dapp browser's provider.");
+        App.web3Provider = window.web3.currentProvider;
+        window.web3 = new Web3(window.web3.currentProvider);
+        console.log("Using legacy dapp browser's provider.");
       } else {
-          alert("Non-Ethereum browser detected. Instalează MetaMask!");
+        alert("Non-Ethereum browser detected. Instalează MetaMask!");
       }
-  },
-
-  loadAccount: async () => {
+    },
+  
+    loadAccount: async () => {
       try {
-          const accounts = await web3.eth.getAccounts();
-          if (accounts.length === 0) {
-              alert("Nu s-au găsit conturi MetaMask. Asigură-te că ești conectat.");
-              return;
-          }
-          App.account = accounts[0];
-          console.log("Cont activ:", App.account);
+        const accounts = await web3.eth.getAccounts();
+        if (accounts.length === 0) {
+          alert("Nu s-au găsit conturi MetaMask. Asigură-te că ești conectat.");
+          return;
+        }
+        App.account = accounts[0];
+        console.log("Cont activ:", App.account);
       } catch (error) {
-          console.error("Eroare la încărcarea contului:", error);
+        console.error("Eroare la încărcarea contului:", error);
       }
-  },
-
-  loadContract: async () => {
-    try {
-        // Adresa contractului DeFiLoan logic (contractul principal)
-        const defiLoanAddress = '0x4a982386DFCf1997c2F45815a2a21e8eCF41Ba09'; // Înlocuiește cu adresa corectă
-        // Adresa contractului Proxy
-        const proxyAddress = '0x8d73852c6aD4f3F663b8E6579817279e06217211'; // Înlocuiește cu adresa corectă a proxy-ului
-        
-        // Încarcă contractul DeFiLoan logic
+    },
+  
+    loadContract: async () => {
+      try {
+        const defiLoanAddress = '0x4a982386DFCf1997c2F45815a2a21e8eCF41Ba09';
+        const proxyAddress = '0x8d73852c6aD4f3F663b8E6579817279e06217211';
+  
         const defiLoan = await $.getJSON('DeFiLoan.json');
         App.contracts.DeFiLoan = TruffleContract(defiLoan);
         App.contracts.DeFiLoan.setProvider(App.web3Provider);
-
-        // Încarcă contractul Proxy
-        const loanProxy = await $.getJSON('LoanProxy.json'); // Asigură-te că ai fișierul ABI pentru LoanProxy
+  
+        const loanProxy = await $.getJSON('LoanProxy.json');
         App.contracts.LoanProxy = TruffleContract(loanProxy);
         App.contracts.LoanProxy.setProvider(App.web3Provider);
-
-        // Obține instanța pentru DeFiLoan și LoanProxy
-        App.defiLoan = await App.contracts.DeFiLoan.at(defiLoanAddress); // Folosește adresa DeFiLoan
-        App.loanProxy = await App.contracts.LoanProxy.at(proxyAddress); // Folosește adresa LoanProxy
-
+  
+        App.defiLoan = await App.contracts.DeFiLoan.at(defiLoanAddress);
+        App.loanProxy = await App.contracts.LoanProxy.at(proxyAddress);
+  
         console.log("Contracte încărcate:", App.defiLoan, App.loanProxy);
-    } catch (error) {
+      } catch (error) {
         console.error("Eroare la încărcarea contractului:", error);
-    }
-},
-
-
-  render: async () => {
+      }
+    },
+  
+    render: async () => {
       if (App.loading) return;
       App.setLoading(true);
-
-      $('#account').html(App.account);
-
-      await App.renderLoans();
-
-      App.setLoading(false);
-  },
-
-  renderLoans: async () => {
-      try {
-          const owner = await App.defiLoan.owner();
-          console.log("Owner contract:", owner);
-          
-          const loansOwner = await App.defiLoan.getActiveLoans(owner);
-          console.log("Împrumuturi active:", loansOwner);
-
-          const $loanTemplate = $('.loanTemplate');
-
-          $('#loanList').empty();
-          $('#repaidLoanList').empty();
-          var index = 0;
-          loansOwner.forEach((loan) => {
-              const amount = loan[0];
-              const interest = loan[1];
-              const dueDate = loan[2];
-              const isRepaid = loan[4];
-
-              console.log(`Împrumut: ${amount} ETH, Dobândă: ${interest}, Scadență: ${new Date(dueDate * 1000).toLocaleString()}, Rambursat: ${isRepaid}`);
-              if(amount != 0 && interest != 0){
-                const $newLoanTemplate = $loanTemplate.clone();
-                $newLoanTemplate.find('.content').html(`Index: ${index}, Sumă: ${amount}, Dobândă: ${interest}, Scadență: ${new Date(dueDate * 1000).toLocaleString()}, Rambursat: ${isRepaid}`);
-                $newLoanTemplate.find('input')
-                    .prop('amount', amount)
-                    .prop('interest', interest)
-                    .on('click', App.toggleRepaid)
   
-                if (isRepaid == true) {
-                    $('#repaidLoanList').append($newLoanTemplate);
-                } else {
-                    $('#loanList').append($newLoanTemplate);
-                    $newLoanTemplate.show();
-                }
-              }
-              index++;
-          });
-
+      $('#account').html(App.account);
+  
+      await App.renderLoans();
+  
+      App.setLoading(false);
+    },
+  
+    renderLoans: async () => {
+      try {
+        const owner = await App.defiLoan.owner();
+        console.log("Owner contract:", owner);
+  
+        const loansOwner = await App.defiLoan.getActiveLoans(owner);
+        console.log("Împrumuturi active:", loansOwner);
+  
+        const $loanTemplate = $('.loanTemplate');
+  
+        $('#loanList').empty();
+        $('#repaidLoanList').empty();
+        var index = 0;
+        loansOwner.forEach((loan) => {
+          const amount = loan[0];
+          const interest = loan[1];
+          const dueDate = loan[2];
+          const isRepaid = loan[4];
+  
+          console.log(`Împrumut: ${amount} ETH, Dobândă: ${interest}, Scadență: ${new Date(dueDate * 1000).toLocaleString()}, Rambursat: ${isRepaid}`);
+          if(amount != 0 && interest != 0){
+            const $newLoanTemplate = $loanTemplate.clone();
+            $newLoanTemplate.find('.content').html(`Index: ${index}, Sumă: ${amount}, Dobândă: ${interest}, Scadență: ${new Date(dueDate * 1000).toLocaleString()}, Rambursat: ${isRepaid}`);
+            $newLoanTemplate.find('input')
+                .prop('amount', amount)
+                .prop('interest', interest)
+                .on('click', App.toggleRepaid)
+  
+            if (isRepaid == true) {
+                $('#repaidLoanList').append($newLoanTemplate);
+            } else {
+                $('#loanList').append($newLoanTemplate);
+                $newLoanTemplate.show();
+            }
+          }
+          index++;
+        });
+  
       } catch (error) {
-          console.error('Eroare la randarea împrumuturilor:', error);
+        console.error('Eroare la randarea împrumuturilor:', error);
       }
-  },
-
-  createLoans: async () => {
-    try {
+    },
+  
+    createLoans: async () => {
+      try {
         App.setLoading(true);
-
+  
         const content = $('#newLoan').val();
         if (!content || isNaN(content)) {
-            alert("Introdu o sumă validă pentru împrumut.");
-            App.setLoading(false);
-            return;
+          alert("Introdu o sumă validă pentru împrumut.");
+          App.setLoading(false);
+          return;
         }
-
-        const dueDate = Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60; // Scadență peste 30 zile
-
+  
+        const dueDate = Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60;
+  
         console.log("Creating loan:", content, dueDate);
         const accounts = await web3.eth.getAccounts();
-        await App.defiLoan.createLoan(content, dueDate, { from: accounts[0] });
+  
+        //costul in gas al tranzactiei
+        const gasEstimate = await App.defiLoan.createLoan.estimateGas(content, dueDate, { from: accounts[0] });
+        console.log(`Estimare gas cost: ${gasEstimate}`);
+  
+        // Fixare limită de cost (opțional)
+        const gasLimit = gasEstimate + 10000;
 
+        await App.defiLoan.createLoan(content, dueDate, {
+            from: accounts[0],
+            gas: gasLimit,
+        });
+  
         alert("Împrumut creat cu succes!");
         window.location.reload();
-    } catch (error) {
+      } catch (error) {
         console.error("Eroare la crearea împrumutului:", error);
-    }
-},
-
-
-handleRepayment: async (event) => {
-  event.preventDefault(); // Previne refresh-ul paginii
-  App.setLoading(true);
-
-  const loanId = document.getElementById('loanId').value;
-  const paymentValue = document.getElementById('paymentValue').value;
-
-  console.log(loanId + " " + paymentValue);
-
-  try {
-      const accounts = await web3.eth.getAccounts();
-
-      // Asigurare că valoarea introdusă e corectă (integer)
-      const valueInWei = web3.utils.toWei(paymentValue, 'ether');
-
-      await App.defiLoan.repayLoan(accounts[0], loanId, { from: accounts[0], value: valueInWei });
-      alert('Împrumutul a fost rambursat cu succes!');
-      window.location.reload();
-  } catch (error) {
-      console.error('Eroare la rambursarea împrumutului:', error);
-      alert('A apărut o eroare la procesarea rambursării.');
-  }
-
-  App.setLoading(false);
-},
-
+      }
+    },
   
+    handleRepayment: async (event) => {
+      event.preventDefault();
+      App.setLoading(true);
+  
+      const loanId = document.getElementById('loanId').value;
+      const paymentValue = document.getElementById('paymentValue').value;
+  
+      console.log(loanId + " " + paymentValue);
+  
+      try {
+        const accounts = await web3.eth.getAccounts();
+        const valueInWei = web3.utils.toWei(paymentValue, 'ether');
+  
+        //costul in gas pt rambursare
+        const gasEstimate = await App.defiLoan.repayLoan.estimateGas(accounts[0], loanId, { from: accounts[0], value: valueInWei });
+        console.log(`Estimare gas cost pentru rambursare: ${gasEstimate}`);
+  
+        // Fixare limită de cost (opțional)
+        const gasLimit = gasEstimate + 10000;
 
-  setLoading: (boolean) => {
+        await App.defiLoan.repayLoan(accounts[0], loanId, {
+            from: accounts[0],
+            value: valueInWei,
+            gas: gasLimit,
+        });
+        
+        alert('Împrumutul a fost rambursat cu succes!');
+        window.location.reload();
+      } catch (error) {
+        console.error('Eroare la rambursarea împrumutului:', error);
+        alert('A apărut o eroare la procesarea rambursării.');
+      }
+  
+      App.setLoading(false);
+    },
+  
+    setLoading: (boolean) => {
       App.loading = boolean;
       const loader = $('#loader');
       const content = $('#content');
       if (boolean) {
-          loader.show();
-          content.hide();
+        loader.show();
+        content.hide();
       } else {
-          loader.hide();
-          content.show();
+        loader.hide();
+        content.show();
       }
-  }
-};
-
-$(() => {
-  $(window).on("load", () => {
+    }
+  };
+  
+  $(() => {
+    $(window).on("load", () => {
       App.load();
+    });
   });
-});
+  

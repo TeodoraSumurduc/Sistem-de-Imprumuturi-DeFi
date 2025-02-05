@@ -1287,15 +1287,15 @@
     "absolutePath": "project:/contracts/LoanLibrary.sol",
     "exportedSymbols": {
       "LoanLibrary": [
-        321
+        342
       ]
     },
-    "id": 322,
+    "id": 343,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 303,
+        "id": 324,
         "literals": [
           "solidity",
           "^",
@@ -1311,16 +1311,16 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 321,
+        "id": 342,
         "linearizedBaseContracts": [
-          321
+          342
         ],
         "name": "LoanLibrary",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 319,
+              "id": 340,
               "nodeType": "Block",
               "src": "223:47:3",
               "statements": [
@@ -1330,7 +1330,7 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 317,
+                    "id": 338,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1342,17 +1342,17 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 314,
+                          "id": 335,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
-                            "id": 312,
+                            "id": 333,
                             "name": "amount",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 305,
+                            "referencedDeclaration": 326,
                             "src": "242:6:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -1362,11 +1362,11 @@
                           "nodeType": "BinaryOperation",
                           "operator": "*",
                           "rightExpression": {
-                            "id": 313,
+                            "id": 334,
                             "name": "rate",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 307,
+                            "referencedDeclaration": 328,
                             "src": "251:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -1380,7 +1380,7 @@
                           }
                         }
                       ],
-                      "id": 315,
+                      "id": 336,
                       "isConstant": false,
                       "isInlineArray": false,
                       "isLValue": false,
@@ -1397,7 +1397,7 @@
                     "operator": "/",
                     "rightExpression": {
                       "hexValue": "313030",
-                      "id": 316,
+                      "id": 337,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -1417,31 +1417,31 @@
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 311,
-                  "id": 318,
+                  "functionReturnParameters": 332,
+                  "id": 339,
                   "nodeType": "Return",
                   "src": "234:28:3"
                 }
               ]
             },
             "functionSelector": "efdd7c07",
-            "id": 320,
+            "id": 341,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "calculateInterest",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 308,
+              "id": 329,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 305,
+                  "id": 326,
                   "mutability": "mutable",
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 320,
+                  "scope": 341,
                   "src": "163:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1450,7 +1450,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 304,
+                    "id": 325,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "163:7:3",
@@ -1463,11 +1463,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 307,
+                  "id": 328,
                   "mutability": "mutable",
                   "name": "rate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 320,
+                  "scope": 341,
                   "src": "179:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1476,7 +1476,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 306,
+                    "id": 327,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "179:7:3",
@@ -1491,16 +1491,16 @@
               "src": "162:30:3"
             },
             "returnParameters": {
-              "id": 311,
+              "id": 332,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 310,
+                  "id": 331,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 320,
+                  "scope": 341,
                   "src": "214:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1509,7 +1509,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 309,
+                    "id": 330,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "214:7:3",
@@ -1523,14 +1523,14 @@
               ],
               "src": "213:9:3"
             },
-            "scope": 321,
+            "scope": 342,
             "src": "136:134:3",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 322,
+        "scope": 343,
         "src": "60:213:3"
       }
     ],
@@ -1544,12 +1544,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x53357d6e4F59dd4282DC28079af53E196D226cf2",
-      "transactionHash": "0x7c5207cb7f07c20cd256cc5ec1b3ab10556e7289bcaa13e3830e782ab987606e"
+      "address": "0x6a72362cbddaf84E96A0705eEaCe2bef1dFdc3c8",
+      "transactionHash": "0xc7c15010e51cb62cdcc8bfe700a460aeb965976f394d03a8056943779931da4e"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-02-04T21:55:01.519Z",
+  "updatedAt": "2025-02-05T17:48:00.184Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

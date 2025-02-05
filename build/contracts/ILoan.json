@@ -98,15 +98,15 @@
     "absolutePath": "project:/contracts/ILoan.sol",
     "exportedSymbols": {
       "ILoan": [
-        301
+        322
       ]
     },
-    "id": 302,
+    "id": 323,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 266,
+        "id": 287,
         "literals": [
           "solidity",
           "^",
@@ -122,24 +122,24 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 301,
+        "id": 322,
         "linearizedBaseContracts": [
-          301
+          322
         ],
         "name": "ILoan",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "ILoan.Loan",
-            "id": 277,
+            "id": 298,
             "members": [
               {
                 "constant": false,
-                "id": 268,
+                "id": 289,
                 "mutability": "mutable",
                 "name": "amount",
                 "nodeType": "VariableDeclaration",
-                "scope": 277,
+                "scope": 298,
                 "src": "106:11:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -148,7 +148,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 267,
+                  "id": 288,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "106:4:2",
@@ -161,11 +161,11 @@
               },
               {
                 "constant": false,
-                "id": 270,
+                "id": 291,
                 "mutability": "mutable",
                 "name": "interest",
                 "nodeType": "VariableDeclaration",
-                "scope": 277,
+                "scope": 298,
                 "src": "128:13:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -174,7 +174,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 269,
+                  "id": 290,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "128:4:2",
@@ -187,11 +187,11 @@
               },
               {
                 "constant": false,
-                "id": 272,
+                "id": 293,
                 "mutability": "mutable",
                 "name": "dueDate",
                 "nodeType": "VariableDeclaration",
-                "scope": 277,
+                "scope": 298,
                 "src": "162:12:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -200,7 +200,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 271,
+                  "id": 292,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "162:4:2",
@@ -213,11 +213,11 @@
               },
               {
                 "constant": false,
-                "id": 274,
+                "id": 295,
                 "mutability": "mutable",
                 "name": "borrower",
                 "nodeType": "VariableDeclaration",
-                "scope": 277,
+                "scope": 298,
                 "src": "185:16:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -226,7 +226,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 273,
+                  "id": 294,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "185:7:2",
@@ -240,11 +240,11 @@
               },
               {
                 "constant": false,
-                "id": 276,
+                "id": 297,
                 "mutability": "mutable",
                 "name": "isRepaid",
                 "nodeType": "VariableDeclaration",
-                "scope": 277,
+                "scope": 298,
                 "src": "212:13:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -253,7 +253,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 275,
+                  "id": 296,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "212:4:2",
@@ -267,29 +267,29 @@
             ],
             "name": "Loan",
             "nodeType": "StructDefinition",
-            "scope": 301,
+            "scope": 322,
             "src": "83:188:2",
             "visibility": "public"
           },
           {
             "functionSelector": "98cd90b5",
-            "id": 284,
+            "id": 305,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "createLoan",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 282,
+              "id": 303,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 279,
+                  "id": 300,
                   "mutability": "mutable",
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 284,
+                  "scope": 305,
                   "src": "297:12:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -298,7 +298,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 278,
+                    "id": 299,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "297:4:2",
@@ -311,11 +311,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 281,
+                  "id": 302,
                   "mutability": "mutable",
                   "name": "_dueDate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 284,
+                  "scope": 305,
                   "src": "311:13:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -324,7 +324,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 280,
+                    "id": 301,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "311:4:2",
@@ -339,12 +339,12 @@
               "src": "296:29:2"
             },
             "returnParameters": {
-              "id": 283,
+              "id": 304,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "334:0:2"
             },
-            "scope": 301,
+            "scope": 322,
             "src": "277:58:2",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -352,23 +352,23 @@
           },
           {
             "functionSelector": "03d1a1a1",
-            "id": 293,
+            "id": 314,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getActiveLoans",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 287,
+              "id": 308,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 286,
+                  "id": 307,
                   "mutability": "mutable",
                   "name": "_borrower",
                   "nodeType": "VariableDeclaration",
-                  "scope": 293,
+                  "scope": 314,
                   "src": "365:17:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -377,7 +377,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 285,
+                    "id": 306,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "365:7:2",
@@ -393,46 +393,46 @@
               "src": "364:19:2"
             },
             "returnParameters": {
-              "id": 292,
+              "id": 313,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 291,
+                  "id": 312,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 293,
+                  "scope": 314,
                   "src": "407:13:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Loan_$277_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Loan_$298_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct ILoan.Loan[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 289,
+                      "id": 310,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 288,
+                        "id": 309,
                         "name": "Loan",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 277,
+                        "referencedDeclaration": 298,
                         "src": "407:4:2"
                       },
-                      "referencedDeclaration": 277,
+                      "referencedDeclaration": 298,
                       "src": "407:4:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Loan_$277_storage_ptr",
+                        "typeIdentifier": "t_struct$_Loan_$298_storage_ptr",
                         "typeString": "struct ILoan.Loan"
                       }
                     },
-                    "id": 290,
+                    "id": 311,
                     "nodeType": "ArrayTypeName",
                     "src": "407:6:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Loan_$277_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Loan_$298_storage_$dyn_storage_ptr",
                       "typeString": "struct ILoan.Loan[]"
                     }
                   },
@@ -441,7 +441,7 @@
               ],
               "src": "406:15:2"
             },
-            "scope": 301,
+            "scope": 322,
             "src": "341:81:2",
             "stateMutability": "view",
             "virtual": false,
@@ -449,23 +449,23 @@
           },
           {
             "functionSelector": "93a595f5",
-            "id": 300,
+            "id": 321,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "repayLoan",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 298,
+              "id": 319,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 295,
+                  "id": 316,
                   "mutability": "mutable",
                   "name": "_borrower",
                   "nodeType": "VariableDeclaration",
-                  "scope": 300,
+                  "scope": 321,
                   "src": "447:17:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -474,7 +474,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 294,
+                    "id": 315,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "447:7:2",
@@ -488,11 +488,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 297,
+                  "id": 318,
                   "mutability": "mutable",
                   "name": "_index",
                   "nodeType": "VariableDeclaration",
-                  "scope": 300,
+                  "scope": 321,
                   "src": "466:11:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -501,7 +501,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 296,
+                    "id": 317,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "466:4:2",
@@ -516,19 +516,19 @@
               "src": "446:32:2"
             },
             "returnParameters": {
-              "id": 299,
+              "id": 320,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "495:0:2"
             },
-            "scope": 301,
+            "scope": 322,
             "src": "428:68:2",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 302,
+        "scope": 323,
         "src": "60:439:2"
       }
     ],
@@ -540,7 +540,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-02-04T21:54:59.831Z",
+  "updatedAt": "2025-02-05T17:47:58.294Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

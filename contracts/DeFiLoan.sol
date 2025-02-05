@@ -43,6 +43,10 @@ contract DeFiLoan is ILoan {
         return activeLoans[_borrower];
     }
 
+    function getPaidLoans(address _borrower) external view returns (Loan[] memory) {
+        return paidLoans[_borrower];
+    }
+
     // Permite rambursarea unui împrumut
     function repayLoan(address _borrower, uint256 _index) public payable override {
         require(_index < activeLoans[_borrower].length, "Loan does not exist");
@@ -62,6 +66,8 @@ contract DeFiLoan is ILoan {
         if (msg.value > interestAmount) {
             payable(msg.sender).transfer(msg.value - interestAmount);
         }
+
+        paidLoans[_borrower].push(loan);
 
         emit LoanRepaid(_borrower, _index);
     }
