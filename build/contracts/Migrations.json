@@ -866,12 +866,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x1140c03b51555E29F77978b36465ee6a819405f9",
-      "transactionHash": "0x4dde18bffb15c85bf56fa0aa11038fce41cb769b71a50989498a920c4910b57c"
+      "address": "0xC0C9FEDdeB7B04dCd7044e7fB972c2C5442C21A1",
+      "transactionHash": "0xe53e507f355613040771cdadbff7c892f9318eb10334b1674847412b24853bf6"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-02-04T18:05:10.289Z",
+  "updatedAt": "2025-02-04T21:55:01.535Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
