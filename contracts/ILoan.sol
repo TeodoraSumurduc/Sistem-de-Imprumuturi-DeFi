@@ -4,10 +4,10 @@ pragma solidity ^0.8.0;
 interface ILoan {
     struct Loan {
         uint amount;
-        uint interest; //dobanda
+        uint interest; 
         uint dueDate;
         address borrower;
-        bool isRepaid; // imprumutul a fost returnat complet
+        bool isRepaid; 
     }
     function createLoan( uint _amount, uint _dueDate) external;
     function getActiveLoans(address _borrower) external view returns (Loan[] memory);

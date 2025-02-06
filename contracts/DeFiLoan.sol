@@ -26,7 +26,7 @@ contract DeFiLoan is ILoan {
     }
 
     constructor() {
-        owner = payable(msg.sender); //adresa celui care a creat contractul
+        owner = payable(msg.sender); 
         emit OwnerAddress(owner);
     }
 
@@ -34,7 +34,7 @@ contract DeFiLoan is ILoan {
         return balances[msg.sender];
     }
 
-    // Adaugă un nou împrumut
+   
     function createLoan(uint _amount, uint _dueDate) public override {
        
     require(_amount > 0, "Amount must be greater than 0");
@@ -57,7 +57,7 @@ contract DeFiLoan is ILoan {
         emit LoanCreated(msg.sender, _amount, 10, _dueDate, false);
     }
 
-    // Obține împrumuturile active ale unui utilizator
+   
     function getActiveLoans(
         address _borrower
     ) external view override returns (Loan[] memory) {
@@ -79,10 +79,10 @@ contract DeFiLoan is ILoan {
 
         require(msg.value == total, "Not enough funds to repay loan");
 
-        // Marcare ca rambursat
+        
         loan.isRepaid = true;
 
-        // Transfer către owner
+        
         payable(owner).transfer(interestAmount);
 
         paidLoans[_borrower].push(loan);

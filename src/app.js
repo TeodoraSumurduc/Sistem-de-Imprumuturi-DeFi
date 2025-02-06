@@ -116,7 +116,6 @@ App = {
 
       const loansOwner = await App.DeFiLoan.getActiveLoans(owner);
 
-      const paidLoans = await App.DeFiLoan.getPaidLoans(owner);
 
 
       App.notifyObservers({ type: 'loansUpdated', data: loansOwner });
@@ -228,11 +227,11 @@ App = {
         if(Number(loansOwner[loanId][0]) * Number(loansOwner[loanId][1]) / 100 + Number(loansOwner[loanId][0])  != Number( paymentValue)){
           throw ("not egal")
         }
-        //costul in gas pt rambursare
+        
         const gasEstimate = await App.DeFiLoan.repayLoan.estimateGas(accounts[0], loanId, { from: accounts[0], value: valueInWei });
         console.log('Estimare gas cost pentru rambursare: '+gasEstimate);
   
-        // Fixare limită de cost (opțional)
+        
         const gasLimit = gasEstimate + 10000;
   
         await App.DeFiLoan.repayLoan(accounts[0], loanId, {

@@ -55,7 +55,7 @@ contract('DeFiLoan', (accounts) => {
         const loansA = await this.defiLoan.getActiveLoans(accounts[0]);
         const loanA = loansA[0];
 
-        // Transformă suma în wei pentru a evita zecimale
+        
         const amountInWei = web3.utils.toBN(loanA.amount);
         const interestInWei = amountInWei.mul(web3.utils.toBN(loanA.interest)).div(web3.utils.toBN(100));
         const totalPayment = amountInWei.add(interestInWei);
