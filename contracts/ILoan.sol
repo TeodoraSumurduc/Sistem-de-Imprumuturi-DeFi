@@ -9,7 +9,7 @@ interface ILoan {
         address borrower;
         bool isRepaid; // imprumutul a fost returnat complet
     }
-    function createLoan(uint _amount, uint _dueDate) external;
+    function createLoan( uint _amount, uint _dueDate) external;
     function getActiveLoans(address _borrower) external view returns (Loan[] memory);
     function repayLoan(address _borrower, uint _index) external payable;
 }

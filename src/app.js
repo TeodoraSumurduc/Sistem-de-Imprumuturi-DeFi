@@ -78,21 +78,21 @@ App = {
 
   loadContract: async () => {
     try {
-      const defiLoanAddress = '0xf779725C14C10b7c03cC96F8EA93Fd10257937E1';
+      const DeFiLoanAddress = '0xf779725C14C10b7c03cC96F8EA93Fd10257937E1';
       const proxyAddress = '0x4466Bb46607B92367c6bD90beB20eE7afd0fbc30';
 
-      const defiLoan = await $.getJSON('DeFiLoan.json');
-      App.contracts.DeFiLoan = TruffleContract(defiLoan);
+      const DeFiLoan = await $.getJSON('DeFiLoan.json');
+      App.contracts.DeFiLoan = TruffleContract(DeFiLoan);
       App.contracts.DeFiLoan.setProvider(App.web3Provider);
 
       const loanProxy = await $.getJSON('LoanProxy.json');
       App.contracts.LoanProxy = TruffleContract(loanProxy);
       App.contracts.LoanProxy.setProvider(App.web3Provider);
 
-      App.defiLoan = await App.contracts.DeFiLoan.at(defiLoanAddress);
+      App.DeFiLoan = await App.contracts.DeFiLoan.at(DeFiLoanAddress);
       App.loanProxy = await App.contracts.LoanProxy.at(proxyAddress);
 
-      console.log("Contracte încărcate:", App.defiLoan, App.loanProxy);
+      console.log("Contracte încărcate:", App.DeFiLoan, App.loanProxy);
     } catch (error) {
       console.error("Eroare la încărcarea contractului:", error);
     }
@@ -105,23 +105,27 @@ App = {
     $('#account').html(App.account);
 
     await App.renderLoans();
-
+    
     App.setLoading(false);
   },
 
   renderLoans: async () => {
     try {
-      const owner = await App.defiLoan.owner();
+      const owner = await App.DeFiLoan.owner();
       console.log("Owner contract:", owner);
 
-      const loansOwner = await App.defiLoan.getActiveLoans(owner);
+      const loansOwner = await App.DeFiLoan.getActiveLoans(owner);
+
+      const paidLoans = await App.DeFiLoan.getPaidLoans(owner);
 
 
       App.notifyObservers({ type: 'loansUpdated', data: loansOwner });
 
       const $loanTemplate = $('.loanTemplate');
       $('#loanList').empty();
-      $('#repaidLoanList').empty();
+      $('#paidLoanList').empty();
+
+
 
       loansOwner.forEach((loan, index) => {
         const amount = loan[0];
@@ -130,14 +134,15 @@ App = {
         const isRepaid = loan[4];
 
         const $newLoanTemplate = $loanTemplate.clone();
-        $newLoanTemplate.find('.content').html(`Index: ${index}, Sumă: ${amount}, Dobândă: ${interest}, Scadență: ${new Date(dueDate * 1000).toLocaleString()}, Rambursat: ${isRepaid}`);
+        $newLoanTemplate.find('.content').html(`Index: ${index}, Sumă: ${amount}, Dobândă: ${interest}, Scadență: ${new Date(dueDate * 1000).toLocaleString()}, Platit: ${isRepaid}`);
         $newLoanTemplate.find('input')
           .prop('amount', amount)
           .prop('interest', interest)
           .on('click', App.toggleRepaid);
 
         if (isRepaid) {
-          $('#repaidLoanList').append($newLoanTemplate);
+          $('#paidLoanList').append($newLoanTemplate);
+          $newLoanTemplate.show();
         } else {
           $('#loanList').append($newLoanTemplate);
           $newLoanTemplate.show();
@@ -159,21 +164,28 @@ App = {
         return;
       }
   
-      const dueDate = Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60;
+      const dueDate = Math.floor(Date.now() / 1000) + 30 * 24 * 3600;
   
       console.log("Creare împrumut:", content, dueDate);
   
       const accounts = await web3.eth.getAccounts();
-  
-      const gasEstimate = await App.defiLoan.createLoan.estimateGas(content, dueDate, { from: accounts[0] });
+      
+ 
+
+      const gasEstimate = await App.DeFiLoan.createLoan.estimateGas(content, dueDate, { from: accounts[0] });
+      
   
       const gasLimit = gasEstimate + 10000;
   
-      await App.defiLoan.createLoan(content, dueDate, {
+      await App.DeFiLoan.createLoan( content, dueDate, {
         from: accounts[0],
         gas: gasLimit,
       });
   
+
+    
+
+
       const newLoanEvent = { type: 'loanCreated', data: { amount: content, dueDate: dueDate } };
       App.notifyObservers(newLoanEvent);
   
@@ -200,8 +212,8 @@ App = {
       const accounts = await web3.eth.getAccounts();
       const valueInWei = web3.utils.toWei(paymentValue, 'ether');
   
-      const owner = await App.defiLoan.owner();
-      const loansOwner = await App.defiLoan.getActiveLoans(owner);
+      const owner = await App.DeFiLoan.owner();
+      const loansOwner = await App.DeFiLoan.getActiveLoans(owner);
   
       if (!loansOwner[loanId]) {
         alert("Împrumutul nu există!");
@@ -217,13 +229,13 @@ App = {
           throw ("not egal")
         }
         //costul in gas pt rambursare
-        const gasEstimate = await App.defiLoan.repayLoan.estimateGas(accounts[0], loanId, { from: accounts[0], value: valueInWei });
-        console.log('Estimare gas cost pentru rambursare: ${gasEstimate}');
+        const gasEstimate = await App.DeFiLoan.repayLoan.estimateGas(accounts[0], loanId, { from: accounts[0], value: valueInWei });
+        console.log('Estimare gas cost pentru rambursare: '+gasEstimate);
   
         // Fixare limită de cost (opțional)
         const gasLimit = gasEstimate + 10000;
   
-        await App.defiLoan.repayLoan(accounts[0], loanId, {
+        await App.DeFiLoan.repayLoan(accounts[0], loanId, {
           from: accounts[0],
           value: valueInWei,
           gas: gasLimit,

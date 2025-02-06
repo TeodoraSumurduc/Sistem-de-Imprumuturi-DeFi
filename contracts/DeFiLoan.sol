@@ -7,6 +7,7 @@ contract DeFiLoan is ILoan {
     address payable public owner;
     mapping(address => Loan[]) public activeLoans;
     mapping(address => Loan[]) public paidLoans;
+    mapping(address => uint) public balances; 
 
     event LoanCreated(
         address indexed borrower,
@@ -17,7 +18,7 @@ contract DeFiLoan is ILoan {
     );
     event LoanRepaid(address indexed borrower, uint loanIndex);
     event OwnerAddress(address owner);
-    event LoanPayed(address indexed borrower, uint loanIndex);
+
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Not the owner");
@@ -29,10 +30,18 @@ contract DeFiLoan is ILoan {
         emit OwnerAddress(owner);
     }
 
+    function getBalance() public view returns (uint value){
+        return balances[msg.sender];
+    }
+
     // Adaugă un nou împrumut
     function createLoan(uint _amount, uint _dueDate) public override {
-        require(_amount > 0, "Amount must be greater than 0");
-        require(_dueDate > block.timestamp, "Due date must be in the future");
+       
+    require(_amount > 0, "Amount must be greater than 0");
+    require(_dueDate > block.timestamp, "Due date must be in the future");
+
+   
+  
 
         activeLoans[msg.sender].push(
             Loan({
@@ -43,6 +52,7 @@ contract DeFiLoan is ILoan {
                 isRepaid: false
             })
         );
+        
 
         emit LoanCreated(msg.sender, _amount, 10, _dueDate, false);
     }
@@ -60,8 +70,6 @@ contract DeFiLoan is ILoan {
         return paidLoans[_borrower];
     }
 
-    // Permite rambursarea unui împrumut
-     // Permite rambursarea unui împrumut
     function repayLoan(address _borrower, uint256 _index) public payable override {
         require(_index < activeLoans[_borrower].length, "Loan does not exist");
 
@@ -81,6 +89,9 @@ contract DeFiLoan is ILoan {
 
         emit LoanRepaid(_borrower, _index);
     }
+
+
+    
 }
    
 

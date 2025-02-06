@@ -35,6 +35,7 @@
             <p class="text-center">Loading...</p>
           </div>
           <div id="content">
+           
             <form onSubmit="App.createLoans(); return false;">
               <label for="newLoan">New Loan:</label>
               <input id="newLoan" type="text" class="form-control" placeholder="Add Loan..." required>
@@ -50,6 +51,7 @@
               <button type="submit">Repay Loan</button>
             </form>
             <br>
+            <span class="title1">Unaid Loans:</span> 
             <ul id="loanList" class="list-unstyled">
               <div class="loanTemplate" style="display: none">
                 <label class="loanItem">
@@ -58,13 +60,18 @@
                 </label>
               </div>
             </ul>            
-            <ul id="repaidLoanList" class="list-unstyled">
+            <br>
+
+            <span class="title1">Paid Loans:</span> 
+            <ul id="paidLoanList" class="list-unstyled">
             </ul>
           </div>
         </main>
       </div>
-    </div>
 
+    </div>
+    
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
