@@ -19,7 +19,6 @@ class LoanRepaymentObserver extends LoanEventObserver {
 }
 
 
-
 App = {
   loading: false,
   contracts: {},
@@ -40,6 +39,7 @@ App = {
     await App.loadAccount();
     await App.loadContract();
     await App.render();
+
   },
 
   loadWeb3: async () => {

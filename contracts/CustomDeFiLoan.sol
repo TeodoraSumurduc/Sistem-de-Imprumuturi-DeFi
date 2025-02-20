@@ -8,7 +8,7 @@ contract CustomDeFiLoan is DeFiLoan {
 
     constructor() DeFiLoan() {}
 
-    // Funcție suplimentară pentru prelungirea unui împrumut
+    
     function extendLoan(uint _loanIndex, uint _extraTime) public {
         require(_loanIndex < activeLoans[msg.sender].length, "Loan does not exist");
         Loan storage loan = activeLoans[msg.sender][_loanIndex];

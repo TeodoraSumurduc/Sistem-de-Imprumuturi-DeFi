@@ -23,12 +23,13 @@
         }
       ],
       "stateMutability": "pure",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"}],\"name\":\"calculateInterest\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/LoanLibrary.sol\":\"LoanLibrary\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/LoanLibrary.sol\":{\"keccak256\":\"0x77bef94a69b54b87d41d5febbdab4bb9098de830a44a1a7edab32bb4f8148233\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bd3817ece8b00b8ddb3206f9f5204b609f42f27b39e0c4088bae43e22ac449f0\",\"dweb:/ipfs/Qmf9SZzuyGuDjGqX7GRy3Cj1oi6Qoyk4DaMsnnbtAZ9AU7\"]}},\"version\":1}",
-  "bytecode": "0x61022761004e600b8282823980515f1a607314610042577f4e487b71000000000000000000000000000000000000000000000000000000005f525f60045260245ffd5b305f52607381538281f3fe7300000000000000000000000000000000000000003014608060405260043610610034575f3560e01c8063efdd7c0714610038575b5f80fd5b610052600480360381019061004d91906100c0565b610068565b60405161005f919061010d565b60405180910390f35b5f606482846100779190610153565b61008191906101c1565b905092915050565b5f80fd5b5f819050919050565b61009f8161008d565b81146100a9575f80fd5b50565b5f813590506100ba81610096565b92915050565b5f80604083850312156100d6576100d5610089565b5b5f6100e3858286016100ac565b92505060206100f4858286016100ac565b9150509250929050565b6101078161008d565b82525050565b5f6020820190506101205f8301846100fe565b92915050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601160045260245ffd5b5f61015d8261008d565b91506101688361008d565b92508282026101768161008d565b9150828204841483151761018d5761018c610126565b5b5092915050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601260045260245ffd5b5f6101cb8261008d565b91506101d68361008d565b9250826101e6576101e5610194565b5b82820490509291505056fea26469706673582212204fcbd3082eef856b9a3934e86caa585a9a2817e3129ffa5857dd7d36957a4ba764736f6c63430008140033",
-  "deployedBytecode": "0x7300000000000000000000000000000000000000003014608060405260043610610034575f3560e01c8063efdd7c0714610038575b5f80fd5b610052600480360381019061004d91906100c0565b610068565b60405161005f919061010d565b60405180910390f35b5f606482846100779190610153565b61008191906101c1565b905092915050565b5f80fd5b5f819050919050565b61009f8161008d565b81146100a9575f80fd5b50565b5f813590506100ba81610096565b92915050565b5f80604083850312156100d6576100d5610089565b5b5f6100e3858286016100ac565b92505060206100f4858286016100ac565b9150509250929050565b6101078161008d565b82525050565b5f6020820190506101205f8301846100fe565b92915050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601160045260245ffd5b5f61015d8261008d565b91506101688361008d565b92508282026101768161008d565b9150828204841483151761018d5761018c610126565b5b5092915050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601260045260245ffd5b5f6101cb8261008d565b91506101d68361008d565b9250826101e6576101e5610194565b5b82820490509291505056fea26469706673582212204fcbd3082eef856b9a3934e86caa585a9a2817e3129ffa5857dd7d36957a4ba764736f6c63430008140033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"}],\"name\":\"calculateInterest\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/LoanLibrary.sol\":\"LoanLibrary\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/LoanLibrary.sol\":{\"keccak256\":\"0x740e48a24a401984beafd46bcfbddf4fde0c80d03c9740e75fd273ec555dba5e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://34a60ed917e2a4cacf0bf4f571ffb18ebeff6a1d395f077ab6de09a2363f4656\",\"dweb:/ipfs/QmbM4KRCWsgWNnxX1g7QPPV2DB97hDA2pGCpeHZzfNsB5o\"]}},\"version\":1}",
+  "bytecode": "0x610238610053600b82828239805160001a607314610046577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600436106100355760003560e01c8063efdd7c071461003a575b600080fd5b610054600480360381019061004f91906100c7565b61006a565b6040516100619190610116565b60405180910390f35b60006064828461007a9190610160565b61008491906101d1565b905092915050565b600080fd5b6000819050919050565b6100a481610091565b81146100af57600080fd5b50565b6000813590506100c18161009b565b92915050565b600080604083850312156100de576100dd61008c565b5b60006100ec858286016100b2565b92505060206100fd858286016100b2565b9150509250929050565b61011081610091565b82525050565b600060208201905061012b6000830184610107565b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b600061016b82610091565b915061017683610091565b925082820261018481610091565b9150828204841483151761019b5761019a610131565b5b5092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60006101dc82610091565b91506101e783610091565b9250826101f7576101f66101a2565b5b82820490509291505056fea2646970667358221220211cd9e404856d8c629966ef58c08fa64057e6c621adce0b35918ca275880b2e64736f6c63430008110033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600436106100355760003560e01c8063efdd7c071461003a575b600080fd5b610054600480360381019061004f91906100c7565b61006a565b6040516100619190610116565b60405180910390f35b60006064828461007a9190610160565b61008491906101d1565b905092915050565b600080fd5b6000819050919050565b6100a481610091565b81146100af57600080fd5b50565b6000813590506100c18161009b565b92915050565b600080604083850312156100de576100dd61008c565b5b60006100ec858286016100b2565b92505060206100fd858286016100b2565b9150509250929050565b61011081610091565b82525050565b600060208201905061012b6000830184610107565b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b600061016b82610091565b915061017683610091565b925082820261018481610091565b9150828204841483151761019b5761019a610131565b5b5092915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601260045260246000fd5b60006101dc82610091565b91506101e783610091565b9250826101f7576101f66101a2565b5b82820490509291505056fea2646970667358221220211cd9e404856d8c629966ef58c08fa64057e6c621adce0b35918ca275880b2e64736f6c63430008110033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [
@@ -1417,23 +1418,23 @@
       "name": "#utility.yul"
     }
   ],
-  "sourceMap": "60:213:3:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "60:213:3:-:0;;;;;;;;;;;;;;;;;;;;;;;;136:134;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;214:7;259:3;251:4;242:6;:13;;;;:::i;:::-;241:21;;;;:::i;:::-;234:28;;136:134;;;;:::o;88:117:7:-;197:1;194;187:12;334:77;371:7;400:5;389:16;;334:77;;;:::o;417:122::-;490:24;508:5;490:24;:::i;:::-;483:5;480:35;470:63;;529:1;526;519:12;470:63;417:122;:::o;545:139::-;591:5;629:6;616:20;607:29;;645:33;672:5;645:33;:::i;:::-;545:139;;;;:::o;690:474::-;758:6;766;815:2;803:9;794:7;790:23;786:32;783:119;;;821:79;;:::i;:::-;783:119;941:1;966:53;1011:7;1002:6;991:9;987:22;966:53;:::i;:::-;956:63;;912:117;1068:2;1094:53;1139:7;1130:6;1119:9;1115:22;1094:53;:::i;:::-;1084:63;;1039:118;690:474;;;;;:::o;1170:126::-;1265:24;1283:5;1265:24;:::i;:::-;1260:3;1253:37;1170:126;;:::o;1302:238::-;1403:4;1441:2;1430:9;1426:18;1418:26;;1454:79;1530:1;1519:9;1515:17;1506:6;1454:79;:::i;:::-;1302:238;;;;:::o;1546:180::-;1594:77;1591:1;1584:88;1691:4;1688:1;1681:15;1715:4;1712:1;1705:15;1732:410;1772:7;1795:20;1813:1;1795:20;:::i;:::-;1790:25;;1829:20;1847:1;1829:20;:::i;:::-;1824:25;;1884:1;1881;1877:9;1906:30;1924:11;1906:30;:::i;:::-;1895:41;;2085:1;2076:7;2072:15;2069:1;2066:22;2046:1;2039:9;2019:83;1996:139;;2115:18;;:::i;:::-;1996:139;1780:362;1732:410;;;;:::o;2148:180::-;2196:77;2193:1;2186:88;2293:4;2290:1;2283:15;2317:4;2314:1;2307:15;2334:185;2374:1;2391:20;2409:1;2391:20;:::i;:::-;2386:25;;2425:20;2443:1;2425:20;:::i;:::-;2420:25;;2464:1;2454:35;;2469:18;;:::i;:::-;2454:35;2511:1;2508;2504:9;2499:14;;2334:185;;;;:::o",
-  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\nlibrary LoanLibrary {\r\n    // Calculează dobânda pentru un împrumut\r\n    function calculateInterest(uint256 amount, uint256 rate) public pure returns (uint256) {\r\n        return (amount * rate) / 100;\r\n    }\r\n}\r\n",
+  "sourceMap": "60:170:3:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "60:170:3:-:0;;;;;;;;;;;;;;;;;;;;;;;;93:134;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;171:7;216:3;208:4;199:6;:13;;;;:::i;:::-;198:21;;;;:::i;:::-;191:28;;93:134;;;;:::o;88:117:7:-;197:1;194;187:12;334:77;371:7;400:5;389:16;;334:77;;;:::o;417:122::-;490:24;508:5;490:24;:::i;:::-;483:5;480:35;470:63;;529:1;526;519:12;470:63;417:122;:::o;545:139::-;591:5;629:6;616:20;607:29;;645:33;672:5;645:33;:::i;:::-;545:139;;;;:::o;690:474::-;758:6;766;815:2;803:9;794:7;790:23;786:32;783:119;;;821:79;;:::i;:::-;783:119;941:1;966:53;1011:7;1002:6;991:9;987:22;966:53;:::i;:::-;956:63;;912:117;1068:2;1094:53;1139:7;1130:6;1119:9;1115:22;1094:53;:::i;:::-;1084:63;;1039:118;690:474;;;;;:::o;1170:126::-;1265:24;1283:5;1265:24;:::i;:::-;1260:3;1253:37;1170:126;;:::o;1302:238::-;1403:4;1441:2;1430:9;1426:18;1418:26;;1454:79;1530:1;1519:9;1515:17;1506:6;1454:79;:::i;:::-;1302:238;;;;:::o;1546:180::-;1594:77;1591:1;1584:88;1691:4;1688:1;1681:15;1715:4;1712:1;1705:15;1732:410;1772:7;1795:20;1813:1;1795:20;:::i;:::-;1790:25;;1829:20;1847:1;1829:20;:::i;:::-;1824:25;;1884:1;1881;1877:9;1906:30;1924:11;1906:30;:::i;:::-;1895:41;;2085:1;2076:7;2072:15;2069:1;2066:22;2046:1;2039:9;2019:83;1996:139;;2115:18;;:::i;:::-;1996:139;1780:362;1732:410;;;;:::o;2148:180::-;2196:77;2193:1;2186:88;2293:4;2290:1;2283:15;2317:4;2314:1;2307:15;2334:185;2374:1;2391:20;2409:1;2391:20;:::i;:::-;2386:25;;2425:20;2443:1;2425:20;:::i;:::-;2420:25;;2464:1;2454:35;;2469:18;;:::i;:::-;2454:35;2511:1;2508;2504:9;2499:14;;2334:185;;;;:::o",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\nlibrary LoanLibrary {\r\n    \r\n    function calculateInterest(uint256 amount, uint256 rate) public pure returns (uint256) {\r\n        return (amount * rate) / 100;\r\n    }\r\n}\r\n",
   "sourcePath": "C:\\Users\\sumur\\Desktop\\An3\\Sistem-de-Imprumuturi-DeFi\\contracts\\LoanLibrary.sol",
   "ast": {
     "absolutePath": "project:/contracts/LoanLibrary.sol",
     "exportedSymbols": {
       "LoanLibrary": [
-        402
+        346
       ]
     },
-    "id": 403,
+    "id": 347,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 384,
+        "id": 328,
         "literals": [
           "solidity",
           "^",
@@ -1450,9 +1451,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 402,
+        "id": 346,
         "linearizedBaseContracts": [
-          402
+          346
         ],
         "name": "LoanLibrary",
         "nameLocation": "68:11:3",
@@ -1460,9 +1461,9 @@
         "nodes": [
           {
             "body": {
-              "id": 400,
+              "id": 344,
               "nodeType": "Block",
-              "src": "223:47:3",
+              "src": "180:47:3",
               "statements": [
                 {
                   "expression": {
@@ -1470,7 +1471,7 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 398,
+                    "id": 342,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1482,18 +1483,18 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 395,
+                          "id": 339,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
-                            "id": 393,
+                            "id": 337,
                             "name": "amount",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 386,
-                            "src": "242:6:3",
+                            "referencedDeclaration": 330,
+                            "src": "199:6:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -1502,32 +1503,32 @@
                           "nodeType": "BinaryOperation",
                           "operator": "*",
                           "rightExpression": {
-                            "id": 394,
+                            "id": 338,
                             "name": "rate",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 388,
-                            "src": "251:4:3",
+                            "referencedDeclaration": 332,
+                            "src": "208:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             }
                           },
-                          "src": "242:13:3",
+                          "src": "199:13:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         }
                       ],
-                      "id": 396,
+                      "id": 340,
                       "isConstant": false,
                       "isInlineArray": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "nodeType": "TupleExpression",
-                      "src": "241:15:3",
+                      "src": "198:15:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1537,54 +1538,54 @@
                     "operator": "/",
                     "rightExpression": {
                       "hexValue": "313030",
-                      "id": 397,
+                      "id": 341,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "259:3:3",
+                      "src": "216:3:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_100_by_1",
                         "typeString": "int_const 100"
                       },
                       "value": "100"
                     },
-                    "src": "241:21:3",
+                    "src": "198:21:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 392,
-                  "id": 399,
+                  "functionReturnParameters": 336,
+                  "id": 343,
                   "nodeType": "Return",
-                  "src": "234:28:3"
+                  "src": "191:28:3"
                 }
               ]
             },
             "functionSelector": "efdd7c07",
-            "id": 401,
+            "id": 345,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "calculateInterest",
-            "nameLocation": "145:17:3",
+            "nameLocation": "102:17:3",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 389,
+              "id": 333,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 386,
+                  "id": 330,
                   "mutability": "mutable",
                   "name": "amount",
-                  "nameLocation": "171:6:3",
+                  "nameLocation": "128:6:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 401,
-                  "src": "163:14:3",
+                  "scope": 345,
+                  "src": "120:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1592,10 +1593,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 385,
+                    "id": 329,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "163:7:3",
+                    "src": "120:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1605,13 +1606,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 388,
+                  "id": 332,
                   "mutability": "mutable",
                   "name": "rate",
-                  "nameLocation": "187:4:3",
+                  "nameLocation": "144:4:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 401,
-                  "src": "179:12:3",
+                  "scope": 345,
+                  "src": "136:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1619,10 +1620,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 387,
+                    "id": 331,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "179:7:3",
+                    "src": "136:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1631,21 +1632,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "162:30:3"
+              "src": "119:30:3"
             },
             "returnParameters": {
-              "id": 392,
+              "id": 336,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 391,
+                  "id": 335,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 401,
-                  "src": "214:7:3",
+                  "scope": 345,
+                  "src": "171:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1653,10 +1654,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 390,
+                    "id": 334,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "214:7:3",
+                    "src": "171:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1665,37 +1666,37 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "213:9:3"
+              "src": "170:9:3"
             },
-            "scope": 402,
-            "src": "136:134:3",
+            "scope": 346,
+            "src": "93:134:3",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 403,
-        "src": "60:213:3",
-        "usedErrors": [],
-        "usedEvents": []
+        "scope": 347,
+        "src": "60:170:3",
+        "usedErrors": []
       }
     ],
-    "src": "33:242:3"
+    "src": "33:199:3"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.8.20+commit.a1b79de6.Emscripten.clang"
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
   },
   "networks": {
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x43024eFeF69880597f3e3C86F6015A6d9856e760",
-      "transactionHash": "0xcd264e6f1bfa50379e23a8ed2dcb31d9c538dc9b36bd8444ae74a5dc13321259"
+      "address": "0xC87C4d590E4a367FB838277382a1c582090C1cfC",
+      "transactionHash": "0xc7c48252cb35f8577b9feebaf2f7762f55a9a9525a92d5d0c59287891f320f2b"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-02-06T04:47:00.838Z",
+  "updatedAt": "2025-02-19T15:49:48.827Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
