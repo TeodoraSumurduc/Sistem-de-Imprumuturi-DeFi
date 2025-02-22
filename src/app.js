@@ -82,6 +82,7 @@ App = {
       const proxyAddress = '0x4466Bb46607B92367c6bD90beB20eE7afd0fbc30';
 
       const DeFiLoan = await $.getJSON('DeFiLoan.json');
+
       App.contracts.DeFiLoan = TruffleContract(DeFiLoan);
       App.contracts.DeFiLoan.setProvider(App.web3Provider);
 

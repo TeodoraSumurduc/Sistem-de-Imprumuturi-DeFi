@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/main', (req, res) => {
-    res.sendFile(__dirname + '/src/main.html');
+    res.sendFile(__dirname + '/src/2.html');
 });
 
 app.get('/users', async (req, res) => {
@@ -30,6 +30,10 @@ app.get('/users', async (req, res) => {
   } catch (err) {
     res.status(500).send('Error reading users');
   }
+});
+
+app.get('/2', async (req, res) => {
+  res.sendFile(__dirname + '/src/2.html');
 });
 
 app.get('/login', (req, res) => {

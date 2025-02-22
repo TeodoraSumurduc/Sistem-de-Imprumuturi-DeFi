@@ -6,5 +6,9 @@
     {
         "name": "Alex",
         "password": "$2b$10$xvFBaqBqFMRjTrE0fUuiSOVFCWK1YhdC3P7JOeEyJupyDICqj0a3S"
+    },
+    {
+        "name": "Teo",
+        "password": "$2b$10$caRYH5JKg4nmjupOEIiWjeTt4aytkpAPkEzGva4ClFziiTm3g9Hee"
     }
 ]

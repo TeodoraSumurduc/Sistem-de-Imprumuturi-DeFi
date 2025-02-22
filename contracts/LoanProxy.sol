@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.13;
 
 contract LoanProxy {
     address public loanLogic; // Adresa contractului logic (DeFiLoan)

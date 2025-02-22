@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.13;
 
 interface ILoan {
     struct Loan {
@@ -9,7 +9,7 @@ interface ILoan {
         address borrower;
         bool isRepaid; 
     }
-    function createLoan( uint _amount, uint _dueDate) external;
+    function createLoan( uint _amount, uint _dueDate) external payable;
     function getActiveLoans(address _borrower) external view returns (Loan[] memory);
     function repayLoan(address _borrower, uint _index) external payable;
 }
